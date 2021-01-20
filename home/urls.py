@@ -8,6 +8,6 @@ urlpatterns = [
     path('projectform/',views.projectform,name ='pf'),
     path('projectform/submit/',views.submitmessage,name ='sm'),
     path('userform/', views.userview,name ="uf"),
-    
+    path('booklist/',views.book_list,name ="BL"), 
 
 ]

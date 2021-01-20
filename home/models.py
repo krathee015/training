@@ -10,6 +10,14 @@ class User(models.Model):
     def __str__(self):
         return self.username
 
+class Books(models.Model):
+    Book_Name = models.CharField(max_length=20)
+    Author = models.CharField(max_length=20)
+    PublishDate = models.DateField() 
+
+    def __str__(self):
+        return self.Book_Name
+
 
     
 
