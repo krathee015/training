@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .forms import ProjectForm, UserForm, BookForm
+from django.shortcuts import render , redirect, get_object_or_404
+from .forms import ProjectForm, UserForm,BookForm
+from .models import Books
 
 # Create your views here.
 
@@ -33,9 +34,35 @@ def userview(request):
 # To view the book as a list
 
 def book_list(request):
-    book = BookForm.object.all()
-    context = {"object_list":book}
-    return render(request,"home/book.html",context)
+    book = Books.objects.all()
+    context = {"object_list": book}
+    return render(request,"book/book.html",context)
+
+def book_view(request, pk, template_name='book/book_detail.html'):
+    book= get_object_or_404(Books, pk=pk)
+    return render(request, template_name, {'object':book})
+
+def book_create(request, template_name='book/book_create.html'):
+    form = BookForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('book_list')
+    return render(request, template_name, {'form':form})
+
+def book_edit(request, pk, template_name='book/book_create.html'):
+    book= get_object_or_404(Books, pk=pk)
+    form = BookForm(request.POST or None, instance=book)
+    if form.is_valid():
+        form.save()
+        return redirect('book_list')
+    return render(request, template_name, {'form':form})
+
+def book_delete(request, pk, template_name='book/book_delete.html'):
+    book = get_object_or_404(Books, pk=pk)
+    if request.method=='POST':
+        book.delete()
+        return redirect('book_list')
+    return render(request, template_name, {'object':book})
 
 
 

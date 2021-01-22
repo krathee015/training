@@ -18,6 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 template_dir = os.path.join(BASE_DIR,'templates')
 static_dir = os.path.join(BASE_DIR,'static')
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -70,7 +71,7 @@ TEMPLATES = [
     },
 ]
 STATICFILES_DIRS = [
-    static_dir
+    static_dir,
 ]
 
 WSGI_APPLICATION = 'training.wsgi.application'

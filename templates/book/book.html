@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% load static %}
+<h1> List of books </h1>
+</br>
+<link rel = "stylesheet" type = "text/css" href = "{% static 'book/book.css' %} ">
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Book Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for book in object_list%}
+    <tr>
+      <td>{{book.Book_Name}}</td>
+      <td>{{book.Author}}</td>
+      <td><a href="{% url "BV" book.id %}"> View </a>  <a href="{% url "BE" book.id %}"> Edit </a> <a href="{% url "BD" book.id %}"> Delete </a></td> 
+    {% endfor %}
+    </tr>
+  </tbody>
+</table> 
+<a href= "{% url "BC" %}" class="btn btn-primary">Create New</a>
+ 
+

@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+{% comment %} {% load static %}
+<link rel = "stylesheet" type = "text/css" href = "{% static 'book/book_detail.css' %} ">  {% endcomment %}
+
+<h1>Book Edit</h1>
+</br>
+
+<form method="post">{% csrf_token %}
+    <div class="mb-3">
+        <label for="BookName" class="form-label">Book Name</label>
+        <input type="text" class="form-control" id="BookNAme" placeholder={{form.Book_Name}}
+    </div>
+    <div class="mb-3">
+        <label for="Author" class="form-label">Author</label>
+        <input type="text" class="form-control" id="Author" placeholder={{form.Author}}
+    </div>
+    <div class="mb-3">
+        <label for="PublishedDate" class="form-label">Publish Date</label>
+        <input type="text" class="form-control" id="PublishedDate" placeholder={{form.PublishDate}}
+    </div>
+    <input type="submit" value="submit" />
+</form>

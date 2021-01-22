@@ -9,5 +9,8 @@ urlpatterns = [
     path('projectform/submit/',views.submitmessage,name ='sm'),
     path('userform/', views.userview,name ="uf"),
     path('booklist/',views.book_list,name ="BL"), 
-
+    path('bookview/<int:pk>',views.book_view,name ="BV"), 
+    path('bookedit/<int:pk>',views.book_edit,name ="BE"), 
+    path('bookdel/<int:pk>',views.book_delete,name ="BD"), 
+    path('bookcreate',views.book_create,name ="BC"), 
 ]
