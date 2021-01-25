@@ -1,15 +1,17 @@
 from django.shortcuts import render , redirect, get_object_or_404
 from .forms import ProjectForm, UserForm,BookForm
 from .models import Books
-
-# Create your views here.
-
+from rest_framework import generics
+from .serializers import Book_Serializers
 from django.http import HttpResponse
+
+class Book_Serializer_View(generics.ListAPIView):
+    queryset = Books.objects.all()
+    serializer_class = Book_Serializers
 
 def index(request):
     context = {'tag_var':'tag_var'}
     return render(request,"home/demo.html",context)
-    
 
 def about(request):
     return HttpResponse("It is about page of Django project")
@@ -46,7 +48,7 @@ def book_create(request, template_name='book/book_create.html'):
     form = BookForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return redirect('book_list')
+        return redirect('book/book')
     return render(request, template_name, {'form':form})
 
 def book_edit(request, pk, template_name='book/book_create.html'):
@@ -54,14 +56,14 @@ def book_edit(request, pk, template_name='book/book_create.html'):
     form = BookForm(request.POST or None, instance=book)
     if form.is_valid():
         form.save()
-        return redirect('book_list')
+        return redirect('book/book')
     return render(request, template_name, {'form':form})
 
 def book_delete(request, pk, template_name='book/book_delete.html'):
     book = get_object_or_404(Books, pk=pk)
     if request.method=='POST':
         book.delete()
-        return redirect('book_list')
+        return redirect('book/book')
     return render(request, template_name, {'object':book})
 
 

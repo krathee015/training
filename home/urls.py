@@ -12,5 +12,6 @@ urlpatterns = [
     path('bookview/<int:pk>',views.book_view,name ="BV"), 
     path('bookedit/<int:pk>',views.book_edit,name ="BE"), 
     path('bookdel/<int:pk>',views.book_delete,name ="BD"), 
-    path('bookcreate',views.book_create,name ="BC"), 
+    path('bookcreate/',views.book_create,name ="BC"), 
+    path('bookAPI/',views.Book_Serializer_View.as_view(),name ="BAPI"),
 ]
