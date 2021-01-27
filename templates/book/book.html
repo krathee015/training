@@ -13,13 +13,13 @@
     </tr>
   </thead>
   <tbody>
-    {% for book in object_list%}
+    {% for book in object_list %}
     <tr>
       <td>{{book.Book_Name}}</td>
       <td>{{book.Author}}</td>
       <td><a href="{% url "BV" book.id %}"> View </a>  <a href="{% url "BE" book.id %}"> Edit </a> <a href="{% url "BD" book.id %}"> Delete </a></td> 
-    {% endfor %}
     </tr>
+    {% endfor %}
   </tbody>
 </table> 
 <a href= "{% url "BC" %}" class="btn btn-primary">Create New</a>

@@ -55,7 +55,7 @@ def book_edit(request, pk, template_name='book/book_create.html'):
     book= get_object_or_404(Books, pk=pk)
     form = BookForm(request.POST or None, instance=book)
     if form.is_valid():
-        form.save()
+        form.save
         return redirect('book/book')
     return render(request, template_name, {'form':form})
 
