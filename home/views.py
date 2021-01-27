@@ -1,11 +1,17 @@
 from django.shortcuts import render , redirect, get_object_or_404
 from .forms import ProjectForm, UserForm,BookForm
 from .models import Books
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from .serializers import Book_Serializers
 from django.http import HttpResponse
 
 class Book_Serializer_View(generics.ListAPIView):
+    queryset = Books.objects.all()
+    serializer_class = Book_Serializers
+
+#for viewsets- CRUD operation on APIs
+
+class Book_Serializer_Viewset_View(viewsets.ModelViewSet):
     queryset = Books.objects.all()
     serializer_class = Book_Serializers
 
