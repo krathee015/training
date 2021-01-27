@@ -26,4 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('api/',include(router.urls),),
+    path('gitapp/',include('gitapp.urls')),
 ]

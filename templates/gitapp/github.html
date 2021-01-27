@@ -1,0 +1,10 @@
+<hi> Github API information </h1>
+
+<form method = "get">
+    <input type ="text" name = "username">
+    <button type = "submit"> Search </button>
+</form>
+
+{% if user %}
+<p><strong> {{user.name}}</strong> has <strong> {{user.public_repos}}</strong> public repositories </p>
+{% endif %}
