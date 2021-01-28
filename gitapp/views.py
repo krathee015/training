@@ -9,7 +9,7 @@ def github(request):
         response = requests.get(url)
         user = response.json()
     context = {'user':user}
-    return(request,'gitapp/github.html',context)
+    return render(request,'gitapp/github.html',context)
 
 
 # Create your views here.
